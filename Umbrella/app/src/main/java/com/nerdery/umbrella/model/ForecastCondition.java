@@ -26,6 +26,11 @@ public class ForecastCondition {
     public String icon;
 
     /**
+     * The human-readable name of the condition
+     */
+    public String condition;
+
+    /**
      * The temperature that is forecast (in degrees Fahrenheit)
      */
     public float tempFahrenheit;

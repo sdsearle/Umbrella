@@ -30,6 +30,7 @@ public class ForecastParser implements JsonDeserializer<ForecastCondition> {
         String tempMetricString = temp.get("metric").getAsString();
         condition.tempFahrenheit = Float.valueOf(tempEnglishString);
         condition.tempCelsius = Float.valueOf(tempMetricString);
+        condition.condition = root.get("condition").getAsString();
 
         JsonObject fcttime = root.getAsJsonObject("FCTTIME");
         condition.displayTime = fcttime.get("civil").getAsString();
