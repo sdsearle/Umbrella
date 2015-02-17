@@ -14,3 +14,4 @@ The api package contains an ApiManager, which provides access to two API classes
 We have set up a few resources for you already.
 All of the icons you need should already be in the appropriate drawable folders.
 The colors used to indicate that the current temperature is "warm" or "cool" are provided in colors.xml.
+Take special note of metrics.md, which defines a number of metrics for styling the application.
