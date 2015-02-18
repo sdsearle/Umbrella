@@ -19,3 +19,13 @@ We have set up a few resources for you already.
 All of the icons you need should already be in the appropriate drawable folders.
 The colors used to indicate that the current temperature is "warm" or "cool" are provided in colors.xml.
 Take special note of metrics.md, which defines a number of metrics for styling the application.
+
+# Forecast cards and the hourly grid
+Note that the LayoutManagers provided in the support library currently do not support nested RecyclerViews 
+that wrap_content or change sizes (e.g. by adding content) very well.
+
+To help you get started working around this issue, we have provided a DynamicGridLayoutManager that can be used
+on a RecyclerView nested within another RecyclerView to display a grid of items.
+
+You do not need to use this class if it does not fit well with your implementation of this application; it is simply
+offered as an option for implementing the hourly forecast grid.
