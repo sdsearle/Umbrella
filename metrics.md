@@ -1,7 +1,3 @@
-# Android verions
-* App should target SDK 21
-* App must support API versions 15 and up.
-
 # Weather Screen
 * The warm color is 0xFF9800.
 * The cool color is 0x03A9F4.

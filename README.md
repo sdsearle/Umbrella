@@ -5,6 +5,10 @@ It provides a number of key pieces to help you get started on the NAT.
 Nothing that we provide should be interpreted as a mandatory component; if you want to remove, modify,
 or replace any of the functionality we have provided with your own implementation, you are free to do so.
 
+# Android verions
+* App should target SDK 21
+* App must support API versions 15 and up.
+
 # APIs
 The api package contains an ApiManager, which provides access to two API classes:
  * WeatherApi: This is the Weather Underground API. The only implemented endpoint is /conditions/hourly.
