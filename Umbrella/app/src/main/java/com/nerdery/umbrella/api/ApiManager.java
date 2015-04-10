@@ -45,6 +45,7 @@ public class ApiManager {
 
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BuildConfig.API_URL)
+                .setLogLevel(BuildConfig.DEBUG ? RestAdapter.LogLevel.FULL : RestAdapter.LogLevel.NONE)
                 .setConverter(new GsonConverter(gson))
                 .build();
 
