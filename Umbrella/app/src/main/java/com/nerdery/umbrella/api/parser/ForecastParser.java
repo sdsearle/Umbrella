@@ -32,10 +32,11 @@ public class ForecastParser implements JsonDeserializer<ForecastCondition> {
         condition.tempCelsius = Float.valueOf(tempMetricString);
         condition.condition = root.get("condition").getAsString();
 
+        // Parse out time data
         JsonObject fcttime = root.getAsJsonObject("FCTTIME");
         condition.displayTime = fcttime.get("civil").getAsString();
-        long epoch = fcttime.get("epoch").getAsLong();
-        condition.time = new Date(epoch);
+        long epochSeconds = fcttime.get("epoch").getAsLong();
+        condition.time = new Date(epochSeconds * 1000);
 
         return condition;
     }
