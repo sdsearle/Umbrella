@@ -6,8 +6,8 @@ Nothing that we provide should be interpreted as a mandatory component; if you w
 or replace any of the functionality we have provided with your own implementation, you are free to do so.
 
 # Android verions
-* App should target SDK 21
-* App must support API versions 15 and up.
+* App should target SDK 23
+* App must support API versions 16 and up.
 
 # APIs
 The api package contains an ApiManager, which provides access to two API classes:
