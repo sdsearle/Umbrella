@@ -18,5 +18,5 @@ public interface WeatherApi {
      * Get the forecast for a given zip code
      */
     @GET("/api/" + BuildConfig.API_KEY + "/conditions/hourly/q/{zip}.json")
-    public void getForecastForZip(@Path("zip") int zipCode, Callback<WeatherData> callback);
+    void getForecastForZip(@Path("zip") int zipCode, Callback<WeatherData> callback);
 }
