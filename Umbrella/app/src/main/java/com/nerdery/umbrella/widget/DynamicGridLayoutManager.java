@@ -66,15 +66,19 @@ public class DynamicGridLayoutManager extends GridLayoutManager {
         switch (widthMode) {
             case View.MeasureSpec.EXACTLY:
                 width = widthSize;
+                break;
             case View.MeasureSpec.AT_MOST:
             case View.MeasureSpec.UNSPECIFIED:
+                break;
         }
 
         switch (heightMode) {
             case View.MeasureSpec.EXACTLY:
                 height = heightSize;
+                break;
             case View.MeasureSpec.AT_MOST:
             case View.MeasureSpec.UNSPECIFIED:
+                break;
         }
 
         setMeasuredDimension(width, height);

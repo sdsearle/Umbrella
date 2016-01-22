@@ -5,9 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.nerdery.umbrella.BuildConfig;
 import com.nerdery.umbrella.api.parser.ForecastParser;
 import com.nerdery.umbrella.model.ForecastCondition;
-
-import retrofit.RestAdapter;
-import retrofit.converter.GsonConverter;
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
 
 /**
  * Manages access to the various APIs we are using
@@ -43,10 +42,9 @@ public class ApiManager {
                 .registerTypeAdapter(ForecastCondition.class, new ForecastParser())
                 .create();
 
-        RestAdapter adapter = new RestAdapter.Builder()
-                .setEndpoint(BuildConfig.API_URL)
-                .setLogLevel(BuildConfig.DEBUG ? RestAdapter.LogLevel.FULL : RestAdapter.LogLevel.NONE)
-                .setConverter(new GsonConverter(gson))
+        Retrofit adapter = new Retrofit.Builder()
+                .baseUrl(BuildConfig.API_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
         return adapter.create(WeatherApi.class);
