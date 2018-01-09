@@ -2,6 +2,8 @@ package com.nerdery.umbrella.data.api;
 
 import com.nerdery.umbrella.BuildConfig;
 import com.nerdery.umbrella.data.model.WeatherData;
+
+import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.adapter.rxjava.Result;
 import retrofit2.http.GET;
@@ -23,5 +25,5 @@ public interface WeatherService {
      * Get the forecast for a given zip code using {@link Observable}
      */
     @GET("/api/" + BuildConfig.API_KEY + "/conditions/hourly/q/{zip}.json")
-    Observable<Result<WeatherData>> forecastForZipObservable(@Path("zip") String zipCode);
+    Single<Result<WeatherData>> forecastForZipObservable(@Path("zip") String zipCode);
 }
