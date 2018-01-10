@@ -1,16 +1,19 @@
 package com.nerdery.umbrella.data;
 
 import android.app.Application;
+
 import com.jakewharton.picasso.OkHttp3Downloader;
 import com.nerdery.umbrella.data.api.IconApi;
 import com.nerdery.umbrella.data.api.WeatherService;
 import com.squareup.moshi.Moshi;
 import com.squareup.picasso.Picasso;
+
 import java.io.File;
+
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 import timber.log.Timber;
 
@@ -66,7 +69,7 @@ public final class ApiServicesProvider {
         .client(client)
         .baseUrl("http://api.wunderground.com")
         .addConverterFactory(MoshiConverterFactory.create(moshi))
-        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build();
   }
 
