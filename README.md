@@ -15,8 +15,8 @@ provided with your own implementation, you are free to do so.
 
 The api package contains an ApiServicesProvider, which provides access to two API classes:
 
-* WeatherApi: This is the Weather Underground API. The only implemented endpoint is /conditions/hourly.
-* IconApi: This API is used to provide better icons than Weather Underground provides.
+* WeatherApi: This is the Dark Sky API. The only implemented endpoint is /forecast.
+* IconApi: This API is used to provide better icons than Dark Sky provides.
 
 # Resources
 
