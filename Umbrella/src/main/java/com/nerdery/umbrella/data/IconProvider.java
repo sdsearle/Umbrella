@@ -7,7 +7,7 @@ import com.nerdery.umbrella.data.model.CurrentObservation;
  */
 public class IconProvider {
 
-    private static final String ICON_URL = "http://nerdery-umbrella.s3.amazonaws.com/%s%s.png";
+    private static final String ICON_URL = "https://codechallenge.nerderylabs.com/mobile-nat/%s%s.png";
 
     private enum IconType {
         NORMAL,
