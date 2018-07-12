@@ -2,18 +2,29 @@ package com.nerdery.umbrella.data;
 
 import android.app.Application;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jakewharton.picasso.OkHttp3Downloader;
+import com.nerdery.umbrella.data.api.DarkSkyService;
 import com.nerdery.umbrella.data.api.IconApi;
 import com.nerdery.umbrella.data.api.WeatherService;
 import com.squareup.moshi.Moshi;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
+import java.util.Date;
+
+import javax.annotation.Nullable;
 
 import okhttp3.Cache;
 import okhttp3.OkHttpClient;
+import okhttp3.ResponseBody;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 import timber.log.Timber;
 
@@ -29,6 +40,7 @@ public final class ApiServicesProvider {
 
   private final IconApi iconApi;
   private final WeatherService weatherService;
+  private final DarkSkyService darkSkyService;
   private final Picasso picasso;
 
   /**
@@ -43,6 +55,7 @@ public final class ApiServicesProvider {
     Moshi moshi = provideMoshi();
 
     weatherService = provideRetrofit(client, moshi).create(WeatherService.class);
+    darkSkyService = provideDarkSkyRetrofit(client, provideGson()).create(DarkSkyService.class);
 
     picasso = new Picasso.Builder(application)
         .downloader(new OkHttp3Downloader(client))
@@ -62,6 +75,21 @@ public final class ApiServicesProvider {
   /** @return an instance of the {@link WeatherService} service that is ready to use. */
   public WeatherService getWeatherService() {
     return weatherService;
+  }
+
+  private Retrofit provideDarkSkyRetrofit(OkHttpClient client, Gson gson) {
+    return new Retrofit.Builder()
+            .client(client)
+            .baseUrl("https://api.darksky.net/forecast/7596ecba2f0d6397a4023a423c7fcd1d/")
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build();
+  }
+
+  private Gson provideGson() {
+      GsonBuilder gson = new GsonBuilder();
+      gson.registerTypeAdapter(Date.class, new DateDeserializer());
+      return gson.create();
   }
 
   private Retrofit provideRetrofit(OkHttpClient client, Moshi moshi) {
@@ -89,4 +117,8 @@ public final class ApiServicesProvider {
         .add(MoshiAdapterFactory.create())
         .build();
   }
+
+    public DarkSkyService getDarkSkyService() {
+        return darkSkyService;
+    }
 }
