@@ -5,7 +5,7 @@ buildscript {
       maven { url 'https://oss.jfrog.org/libs-snapshot' }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.0.1'
+    classpath 'com.android.tools.build:gradle:3.1.3'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
   }
 }
@@ -19,16 +19,16 @@ repositories{
 apply plugin: 'com.android.application'
 apply plugin: 'com.github.ben-manes.versions'
 
-// Use `com.nerdery.umbrella.weatherundergroundapikey` in gradle.properties or as a command line
-// parameter or `WEATHER_UNDERGROUND_API_KEY` as a System Environment variable to provide weather
-// underground api key to this project
-ext.weatherUndergroundApiKey = project.hasProperty('com.nerdery.umbrella.weatherundergroundapikey')?
-    project.getProperty('com.nerdery.umbrella.weatherundergroundapikey'):
-    System.getenv('WEATHER_UNDERGROUND_API_KEY')?:''
+// Use `com.nerdery.umbrella.darkskyapikey` in gradle.properties or as a command line
+// parameter or `DARK_SKY_API_KEY` as a System Environment variable to provide dark
+// sky api key to this project
+ext.darkSkyApiKey = project.hasProperty('com.nerdery.umbrella.darkskyapikey')?
+    project.getProperty('com.nerdery.umbrella.darkskyapikey'):
+    System.getenv('DARK_SKY_API_KEY')?:''
 
 android {
   compileSdkVersion 27
-  buildToolsVersion '26.0.2'
+  buildToolsVersion '27.0.3'
 
   signingConfigs {
     umbrella {
@@ -46,8 +46,7 @@ android {
     versionCode 1
     versionName '1.0'
 
-    buildConfigField "String", "API_KEY", "\"$project.weatherUndergroundApiKey\""
-    buildConfigField "String", "API_URL", "\"http://api.wunderground.com\""
+    buildConfigField "String", "API_KEY", "\"$project.darkSkyApiKey\""
 
     signingConfig signingConfigs.umbrella
   }
@@ -65,10 +64,11 @@ android {
 }
 
 ext {
-    SUPPORT_LIB_VERSION = "27.0.2"
+    SUPPORT_LIB_VERSION = "27.1.1"
     RETROFIT_VERSION = "2.3.0"
     OKHTTP_VERSION = "3.9.0"
-    MOSHI_ANNOTATIONS_VERSION = "0.4.2"
+    ROOM_VERSION = "1.1.1"
+    FACEBOOK_VERSION = "1.5.0"
 }
 
 dependencies {
@@ -79,10 +79,6 @@ dependencies {
   implementation "com.android.support:design:$SUPPORT_LIB_VERSION"
   implementation "com.android.support:cardview-v7:$SUPPORT_LIB_VERSION"
 
-  provided "com.google.auto.value:auto-value:1.3"
-  provided "com.ryanharter.auto.value:auto-value-moshi-annotations:$MOSHI_ANNOTATIONS_VERSION"
-  annotationProcessor "com.ryanharter.auto.value:auto-value-moshi:$MOSHI_ANNOTATIONS_VERSION"
-
   implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
   implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
   implementation "com.squareup.picasso:picasso:2.5.2"
@@ -90,19 +86,21 @@ dependencies {
   implementation "com.squareup.retrofit2:converter-moshi:$RETROFIT_VERSION"
   implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
   implementation "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION"
-  implementation "com.squareup.moshi:moshi:1.5.0"
 
   implementation "io.reactivex.rxjava2:rxjava:2.1.8"
   implementation "io.reactivex.rxjava2:rxandroid:2.0.1"
 
   implementation "com.jakewharton.byteunits:byteunits:0.9.1"
-  implementation "com.jakewharton.threetenabp:threetenabp:1.0.4"
+  implementation "com.jakewharton.threetenabp:threetenabp:1.0.5"
   implementation "com.jakewharton.timber:timber:4.5.1"
   implementation "com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0"
 
   implementation "com.f2prateek.rx.preferences:rx-preferences:1.0.2"
 
-  debugImplementation "com.facebook.stetho:stetho:1.4.2"
-  debugImplementation "com.facebook.stetho:stetho-okhttp3:1.4.2"
-  debugImplementation "com.facebook.stetho:stetho-timber:1.4.2@aar"
+  implementation "android.arch.persistence.room:runtime:$ROOM_VERSION"
+  annotationProcessor "android.arch.persistence.room:compiler:$ROOM_VERSION"
+
+  debugImplementation "com.facebook.stetho:stetho:$FACEBOOK_VERSION"
+  debugImplementation "com.facebook.stetho:stetho-okhttp3:$FACEBOOK_VERSION"
+  debugImplementation "com.facebook.stetho:stetho-timber:$FACEBOOK_VERSION@aar"
 }

@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.nerdery.umbrella.R;
 import com.nerdery.umbrella.data.ApiServicesProvider;
-import com.nerdery.umbrella.data.ZipService;
-import com.nerdery.umbrella.data.model.DarkSkyResponse;
+import com.nerdery.umbrella.data.ZipCodeService;
+import com.nerdery.umbrella.data.model.WeatherResponse;
 import com.nerdery.umbrella.data.model.TempUnit;
 
 import java.util.Locale;
@@ -41,16 +41,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getWeather(String zipCode) {
-        ZipService.getLatLongByZip(this, zipCode, new ZipService.ZipLocationListener() {
+        ZipCodeService.getLatLongByZip(this, zipCode, new ZipCodeService.ZipLocationListener() {
             @Override
-            public void onLocationFound(ZipService.ZipLocation location) {
-                apiServicesProvider.getDarkSkyService()
+            public void onLocationFound(ZipCodeService.ZipLocation location) {
+                apiServicesProvider.getWeatherService()
                         .getWeatherCall(location.getLatitude(), location.getLongitude(), TempUnit.FAHRENHEIT)
-                        .enqueue(new Callback<DarkSkyResponse>() {
+                        .enqueue(new Callback<WeatherResponse>() {
                             @Override
-                            public void onResponse(Call<DarkSkyResponse> call, Response<DarkSkyResponse> response) {
+                            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
                                 Log.d("Dark Sky Response", response.toString());
-                                DarkSkyResponse weather = response.body();
+                                WeatherResponse weather = response.body();
                                 if (weather != null) {
                                     weatherOutput.setText(String.format(
                                             Locale.getDefault(),
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<DarkSkyResponse> call, Throwable error) {
+                            public void onFailure(Call<WeatherResponse> call, Throwable error) {
                                 Log.e("Dark Sky", "Error Retrieving Weather", error);
                             }
                         });
