@@ -72,7 +72,7 @@ public final class ApiServicesProvider {
     private Retrofit provideDarkSkyRetrofit(OkHttpClient client, Gson gson) {
         return new Retrofit.Builder()
                 .client(client)
-                .baseUrl("https://api.darksky.net/forecast/7596ecba2f0d6397a4023a423c7fcd1d/")
+                .baseUrl("https://api.darksky.net/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
