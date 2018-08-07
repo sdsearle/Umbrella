@@ -8,6 +8,10 @@ public class HourlyResponse {
     @SerializedName("data")
     List<ForecastCondition> hours;
 
+    /**
+     * Ordered List of Hourly {@link ForecastCondition}
+     * @return List of {@link ForecastCondition}
+     */
     public List<ForecastCondition> getHours() {
         return hours;
     }

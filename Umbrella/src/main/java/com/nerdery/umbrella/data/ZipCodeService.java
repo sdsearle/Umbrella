@@ -10,6 +10,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * This Service is used to lookup location details of a specific US ZIP code
+ */
 public class ZipCodeService {
 
     public interface ZipLocationListener {
@@ -50,6 +53,12 @@ public class ZipCodeService {
         }
     }
 
+    /**
+     * Request location details of a given zip code
+     * @param context Generic context to retrieve zip codes resources
+     * @param zipCode Numerical zip code
+     * @param listener ZipLocationListener used to listen for successful result or error
+     */
     public static void getLatLongByZip(Context context, String zipCode, ZipLocationListener listener) {
         long zipLong = 0;
         try {
