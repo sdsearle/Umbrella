@@ -1,58 +1,48 @@
 package com.nerdery.umbrella.data.model;
 
-import com.google.auto.value.AutoValue;
-import org.threeten.bp.LocalDateTime;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.Date;
 
 /**
- * Represents a forecast weather condition returned from Weather Underground
- *
- * Does not include all available only data- only potentially useful fields are included
+ * Specific weather condition for time and location
  */
-@AutoValue
-public abstract class ForecastCondition {
+public class ForecastCondition {
+    String summary;
+    String icon;
+    @SerializedName("temperature")
+    double temp;
+    Date time;
 
-  public static Builder builder() {
-    return new AutoValue_ForecastCondition.Builder();
-  }
+    /**
+     * Text summary of weather condition
+     * @return Summary
+     */
+    public String getSummary() {
+        return summary;
+    }
 
-  /**
-   * Formatted time suitable for display
-   */
-  public abstract String getDisplayTime();
+    /**
+     * Icon name of weather condition
+     * @return Icon Name
+     */
+    public String getIcon() {
+        return icon;
+    }
 
-  /**
-   * Date representation of the time associated with this forecast
-   */
-  public abstract LocalDateTime getDateTime();
+    /**
+     * Temperature in degrees of {@link TempUnit} sent during request
+     * @return Temperature
+     */
+    public double getTemp() {
+        return temp;
+    }
 
-  /**
-   * The icon to use for this reading
-   */
-  public abstract String getIcon();
-
-  /**
-   * The human-readable name of the condition
-   */
-  public abstract String getCondition();
-
-  /**
-   * The temperature that is forecast (in degrees Fahrenheit)
-   */
-  public abstract String getTempFahrenheit();
-
-  /**
-   * The temperature that is forecast (in degrees Celsius)
-   */
-  public abstract String getTempCelsius();
-
-  @AutoValue.Builder
-  public abstract static class Builder {
-    public abstract Builder setDisplayTime(String displayTime);
-    public abstract Builder setDateTime(LocalDateTime dateTime);
-    public abstract Builder setIcon(String icon);
-    public abstract Builder setCondition(String condition);
-    public abstract Builder setTempFahrenheit(String tempFahrenheit);
-    public abstract Builder setTempCelsius(String tempCelsius);
-    public abstract ForecastCondition build();
-  }
+    /**
+     * Time/Date of Forecast Condition
+     * @return Date
+     */
+    public Date getTime() {
+        return time;
+    }
 }

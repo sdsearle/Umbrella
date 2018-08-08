@@ -1,7 +1,5 @@
 package com.nerdery.umbrella.data;
 
-import com.nerdery.umbrella.data.model.CurrentObservation;
-
 /**
  * API for getting custom Nerdery icon URLs for weather conditions
  */
@@ -17,7 +15,6 @@ public class IconProvider {
     /**
      * Get the URL to an icon suitable for use as a replacement for the icons given by Weather Underground
      * @param icon The name of the icon provided by Weather Underground (e.g. "clear").
-     *      {@see {@link CurrentObservation#getIconName()}}
      * @return A URL to an icon, always returns the non-highlighted version
      */
     public String getUrlForIcon(String icon) {
@@ -27,7 +24,6 @@ public class IconProvider {
     /**
      * Get the URL to an icon suitable for use as a replacement for the icons given by Weather Underground
      * @param icon The name of the icon provided by Weather Underground (e.g. "clear").
-     *      {@see {@link CurrentObservation#getIconName()}}
      * @param type the type of icon to retrieve.
      * @return A URL to an icon
      */
