@@ -7,10 +7,6 @@ Nothing that we provide should be interpreted as a mandatory component;
 if you want to remove, modify, or replace any of the functionality we have
 provided with your own implementation, you are free to do so.
 
-# Android Versions
-* App should target the latest SDK
-* App must support API versions 19 and up.
-
 # APIs
 
 The api package contains an ApiServicesProvider, which provides access to two API classes:
@@ -18,15 +14,14 @@ The api package contains an ApiServicesProvider, which provides access to two AP
 * WeatherApi: This is the Dark Sky API. The only implemented endpoint is /forecast.
 * ZipCodeService: This service takes a US ZIP code and returns a location model containing latitude
 and longitude to be used for the Dark Sky request, along with location city and state.
-* IconApi: This API is used to provide better icons than Dark Sky provides.
+* IconApi: This API is used to provide icons, since Dark Sky does not provide any.
 
 # Resources
 
 We have set up a few resources for you already.
 All of the icons you need should already be in the appropriate drawable folders.
 The colors used to indicate that the current temperature is "warm" or "cool"
-are provided in colors.xml. Take special note of metrics.md, which defines a
-number of metrics for styling the application.
+are provided in colors.xml.
 
 # Design notes
 The header of the application should be static and *not* collapse when
