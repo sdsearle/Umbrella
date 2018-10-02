@@ -34,7 +34,10 @@ object ZipCodeService {
         )
 
         for (location in locations) {
-            if (location.zipCode == zipLong) listener.onLocationFound(location)
+            if (location.zipCode == zipLong) {
+                listener.onLocationFound(location)
+                return
+            }
         }
 
         listener.onLocationNotFound()
