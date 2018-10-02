@@ -24,12 +24,4 @@ The colors used to indicate that the current temperature is "warm" or "cool"
 are provided in colors.xml.
 
 # Design notes
-The header of the application should be static and *not* collapse when
-scrolling. One question that could be asked in a second interview is how might
-you go about making the header collapsable. We have a standard at the Nerdery
-that if something changes, it should animate it. However, for the NAT we
-recognize that time constraints really don't allow for much in the way of
-animations. If you see a way to use a freebie animation that is easily
-implemented in a couple lines or less, feel free to include it in the project.
-The status bar isn't up to modern material designs standards. Please ignore
-the designs in that aspect and use the system defaults.
+Review the _Android Designs.pdf_ and _metrics.md_ files for information related to the UI.
