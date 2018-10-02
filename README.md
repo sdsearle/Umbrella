@@ -24,4 +24,6 @@ The colors used to indicate that the current temperature is "warm" or "cool"
 are provided in colors.xml.
 
 # Design notes
-Review the _Android Designs.pdf_ and _metrics.md_ files for information related to the UI.
+You should have received a detailed design document from your NX resource.  This explains the implementation in detail.
+
+If you don't have this information, please reach out to your NX contact directly.
