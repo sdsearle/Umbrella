@@ -72,7 +72,10 @@ public class ZipCodeService {
         Gson gson = new Gson();
         ZipLocation[] locations = gson.fromJson(jsonString, ZipLocation[].class);
         for (ZipLocation location : locations) {
-            if (location.zipCode == zipLong) listener.onLocationFound(location);
+            if (location.zipCode == zipLong) {
+                listener.onLocationFound(location);
+                return;
+            }
         }
         listener.onLocationNotFound();
     }
