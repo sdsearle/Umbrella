@@ -12,12 +12,12 @@ import retrofit2.http.Query
 
 interface WeatherService {
 
-    @GET("/forecast/" + BuildConfig.API_KEY + "/{latitude},{longitude}")
+    @GET("/forecast/${BuildConfig.API_KEY}/{latitude},{longitude}")
     fun getWeather(@Path("latitude") latitude: Double,
                    @Path("longitude") longitude: Double,
                    @Query("units") units: TempUnit): Single<WeatherResponse>
 
-    @GET("/forecast/" + BuildConfig.API_KEY + "/{latitude},{longitude}")
+    @GET("/forecast/${BuildConfig.API_KEY}/{latitude},{longitude}")
     fun getWeatherCall(@Path("latitude") latitude: Double,
                        @Path("longitude") longitude: Double,
                        @Query("units") units: TempUnit): Call<WeatherResponse>

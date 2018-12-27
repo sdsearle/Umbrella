@@ -27,6 +27,10 @@ import com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES
  */
 class ApiServicesProvider(application: Application) {
 
+    companion object {
+        private val DISK_CACHE_SIZE = MEGABYTES.toBytes(50).toInt()
+    }
+
     /**
      * Instance of ready to use [IconApi]
      */
@@ -71,9 +75,4 @@ class ApiServicesProvider(application: Application) {
                 .cache(cache)
                 .build()
     }
-
-    companion object {
-        private val DISK_CACHE_SIZE = MEGABYTES.toBytes(50).toInt()
-    }
-
 }
