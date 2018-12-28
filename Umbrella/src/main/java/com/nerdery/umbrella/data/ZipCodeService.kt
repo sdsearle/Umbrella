@@ -54,7 +54,6 @@ object ZipCodeService {
 
         return outputStream.toString()
     }
-
 }
 
 interface ZipLocationListener {

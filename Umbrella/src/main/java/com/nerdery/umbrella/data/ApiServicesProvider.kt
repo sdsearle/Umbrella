@@ -6,7 +6,6 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.nerdery.umbrella.data.api.WeatherService
-import com.nerdery.umbrella.data.api.IconApi
 import com.squareup.picasso.Picasso
 
 import java.io.File
@@ -34,7 +33,7 @@ class ApiServicesProvider(application: Application) {
     /**
      * Instance of ready to use [IconApi]
      */
-    val iconApi: IconApi = IconApi()
+    val iconProvider = IconProvider()
     /**
      * Instance of the [WeatherService] service that is ready to use.
      */

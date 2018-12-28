@@ -9,4 +9,4 @@ data class HourlyResponse(
      */
     @SerializedName("data")
     var hours: List<ForecastCondition>
-    )
+)

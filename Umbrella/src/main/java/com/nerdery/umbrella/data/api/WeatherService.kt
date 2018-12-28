@@ -21,5 +21,4 @@ interface WeatherService {
     fun getWeatherCall(@Path("latitude") latitude: Double,
                        @Path("longitude") longitude: Double,
                        @Query("units") units: TempUnit): Call<WeatherResponse>
-
 }
