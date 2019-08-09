@@ -6,7 +6,7 @@ buildscript {
       maven { url 'https://oss.jfrog.org/libs-snapshot' }
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.5.0-beta01'
+    classpath 'com.android.tools.build:gradle:3.5.0-rc02'
     classpath 'com.github.ben-manes:gradle-versions-plugin:0.15.0'
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
@@ -74,12 +74,12 @@ ext {
 }
 
 dependencies {
-  implementation "androidx.legacy:legacy-support-v4:$JETPACK_VERSION"
-  implementation "androidx.annotation:annotation:$JETPACK_VERSION"
-  implementation "androidx.appcompat:appcompat:$JETPACK_VERSION"
-  implementation "androidx.recyclerview:recyclerview:$JETPACK_VERSION"
-  implementation "com.google.android.material:material:$JETPACK_VERSION"
-  implementation "androidx.cardview:cardview:$JETPACK_VERSION"
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+  implementation 'androidx.annotation:annotation:1.1.0'
+  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'com.google.android.material:material:1.0.0'
+  implementation 'androidx.cardview:cardview:1.0.0'
 
   implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
   implementation "com.squareup.okhttp3:logging-interceptor:$OKHTTP_VERSION"
