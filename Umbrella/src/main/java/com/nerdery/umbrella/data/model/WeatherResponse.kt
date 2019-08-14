@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Response from DarkSky weather requests in [com.nerdery.umbrella.data.api.WeatherService]
  */
-data class WeatherResponse (
+data class WeatherResponse(
 
     /**
      * Current Weather Condition

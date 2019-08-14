@@ -9,5 +9,4 @@ class UmbrellaApp : Application() {
         super.onCreate()
         AndroidThreeTen.init(this)
     }
-
 }
