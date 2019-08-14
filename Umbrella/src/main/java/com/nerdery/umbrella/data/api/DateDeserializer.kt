@@ -1,4 +1,4 @@
-package com.nerdery.umbrella.data
+package com.nerdery.umbrella.data.api
 
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer

@@ -19,9 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 import com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES
+import com.nerdery.umbrella.data.api.DateDeserializer
 
 /**
- * Provides [Picasso], [WeatherService], and [IconApi]
+ * Provides [Picasso] and [WeatherService]
  * that are all ready setup and ready to use.
  */
 class ApiServicesProvider(application: Application) {
@@ -31,13 +32,10 @@ class ApiServicesProvider(application: Application) {
     }
 
     /**
-     * Instance of ready to use [IconApi]
-     */
-    val iconProvider = IconProvider()
-    /**
      * Instance of the [WeatherService] service that is ready to use.
      */
     val weatherService: WeatherService
+
     /**
      * Instance of the [Picasso]
      */

@@ -12,5 +12,5 @@
     <color name="weather_cool">#03a9f4</color>
 
     <!-- Forecast card colors -->
-    <color name="forecast_card_divider">#ccc</color>
+    <color name="forecast_card_divider">#cccccc</color>
 </resources>
