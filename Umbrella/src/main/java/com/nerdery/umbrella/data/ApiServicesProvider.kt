@@ -19,9 +19,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
 import com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES
+import com.nerdery.umbrella.data.api.DateDeserializer
 
 /**
- * Provides [Picasso], [WeatherService], and [IconApi]
+ * Provides [Picasso] and [WeatherService]
  * that are all ready setup and ready to use.
  */
 class ApiServicesProvider(application: Application) {
@@ -31,13 +32,10 @@ class ApiServicesProvider(application: Application) {
     }
 
     /**
-     * Instance of ready to use [IconApi]
-     */
-    val iconProvider = IconProvider()
-    /**
      * Instance of the [WeatherService] service that is ready to use.
      */
     val weatherService: WeatherService
+
     /**
      * Instance of the [Picasso]
      */
@@ -49,21 +47,21 @@ class ApiServicesProvider(application: Application) {
         weatherService = provideDarkSkyRetrofit(client, provideGson()).create(WeatherService::class.java)
 
         picasso = Picasso.Builder(application)
-                .downloader(OkHttp3Downloader(client))
-                .listener { picasso, uri, e -> Timber.e(e, "Failed to load image: %s", uri) }
-                .build()
+            .downloader(OkHttp3Downloader(client))
+            .listener { picasso, uri, e -> Timber.e(e, "Failed to load image: %s", uri) }
+            .build()
     }
 
-    private fun provideDarkSkyRetrofit(client: OkHttpClient, gson: Gson) =  Retrofit.Builder()
-            .client(client)
-            .baseUrl("https://api.darksky.net/")
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
+    private fun provideDarkSkyRetrofit(client: OkHttpClient, gson: Gson) = Retrofit.Builder()
+        .client(client)
+        .baseUrl("https://api.darksky.net/")
+        .addConverterFactory(GsonConverterFactory.create(gson))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
 
     private fun provideGson() = GsonBuilder()
-            .apply { registerTypeAdapter(Date::class.java, DateDeserializer()) }
-            .create()
+        .apply { registerTypeAdapter(Date::class.java, DateDeserializer()) }
+        .create()
 
     private fun createOkHttpClient(app: Application): OkHttpClient {
         // Install an HTTP cache in the application cache directory.
@@ -71,7 +69,7 @@ class ApiServicesProvider(application: Application) {
         val cache = Cache(cacheDir, DISK_CACHE_SIZE.toLong())
 
         return OkHttpClient.Builder()
-                .cache(cache)
-                .build()
+            .cache(cache)
+            .build()
     }
 }
