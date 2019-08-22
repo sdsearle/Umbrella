@@ -20,9 +20,10 @@ import timber.log.Timber
 
 import com.jakewharton.byteunits.DecimalByteUnit.MEGABYTES
 import com.nerdery.umbrella.data.api.DateDeserializer
+import com.nerdery.umbrella.data.api.IconApi
 
 /**
- * Provides [Picasso] and [WeatherService]
+ * Provides [Picasso], [WeatherService] and [IconApi]
  * that are all ready setup and ready to use.
  */
 class ApiServicesProvider(application: Application) {
@@ -30,6 +31,11 @@ class ApiServicesProvider(application: Application) {
     companion object {
         private val DISK_CACHE_SIZE = MEGABYTES.toBytes(50).toInt()
     }
+
+    /**
+     * Instance of ready to use [IconApi]
+     */
+    val iconApi = IconApi()
 
     /**
      * Instance of the [WeatherService] service that is ready to use.
