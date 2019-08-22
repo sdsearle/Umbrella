@@ -25,6 +25,7 @@ All of the icons you need should already be in the appropriate drawable folders.
 The colors used to indicate that the current temperature is "warm" or "cool" are provided in colors.xml.
 
 # Design notes
+
 You should have received a detailed design document from your NX resource.  It explains the implementation in detail.
 
 This [detailed design document](https://drive.google.com/file/d/1wrAapV_RnwK4pQtRnahSOPsAR5OdMdkc/view?usp=sharing) explains the implementation.
