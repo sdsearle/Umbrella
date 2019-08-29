@@ -23,7 +23,7 @@ import com.nerdery.umbrella.data.api.DateDeserializer
 import com.nerdery.umbrella.data.api.IconApi
 
 /**
- * Provides [Picasso] and [WeatherService]
+ * Provides [Picasso], [WeatherService] and [IconApi]
  * that are all ready setup and ready to use.
  */
 class ApiServicesProvider(application: Application) {

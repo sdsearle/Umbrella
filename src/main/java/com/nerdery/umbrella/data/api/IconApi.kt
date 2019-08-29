@@ -4,6 +4,7 @@ package com.nerdery.umbrella.data.api
  * API for getting custom Nerdery icon URLs for weather conditions
  *
  * This really isn't so much an API as a utility, but we will treat it as an API
+ *
  */
 class IconApi {
 
