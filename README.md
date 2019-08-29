@@ -26,8 +26,6 @@ The colors used to indicate that the current temperature is "warm" or "cool" are
 
 # Design notes
 
-You should have received a detailed design document from your NX resource.  It explains the implementation in detail.
-
 This [detailed design document](https://drive.google.com/file/d/1wrAapV_RnwK4pQtRnahSOPsAR5OdMdkc/view?usp=sharing) explains the implementation.
 
 Please review it for details relating to the application design.
@@ -37,4 +35,4 @@ Please review it for details relating to the application design.
 In order to use the API, you will need to create an API key, and set it in the `com.nerdery.umbrella.darkskyapikey` variable in the `gradle.properties` file.
 [Dark Sky API](https://darksky.net/dev)
 
-Still have questions? Don't hesitate to reach out to your Talent Advocate for anything you need.
+### Still have questions? Don't hesitate to reach out to your Talent Advocate for anything you need.

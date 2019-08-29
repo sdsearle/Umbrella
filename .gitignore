@@ -71,6 +71,7 @@ obj/
 .idea/tasks.xml
 .idea/.name
 .idea/compiler.xml
+.idea/codeStyles/Project.xml
 .idea/copyright/profiles_settings.xml
 .idea/encodings.xml
 .idea/misc.xml
