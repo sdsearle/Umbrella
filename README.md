@@ -26,7 +26,7 @@ The colors used to indicate that the current temperature is "warm" or "cool" are
 
 # Design notes
 
-This [detailed design document](https://drive.google.com/file/d/1wrAapV_RnwK4pQtRnahSOPsAR5OdMdkc/view?usp=sharing) explains the implementation.
+This [detailed design document](./docs/Wireframes.pdf) explains the implementation.
 
 Please review it for details relating to the application design.
 
