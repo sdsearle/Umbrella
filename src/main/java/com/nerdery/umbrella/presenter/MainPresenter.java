@@ -42,6 +42,7 @@ public class MainPresenter {
         tomorrowList = new ArrayList<>();
     }
 
+    //Finds location of a Zip if it is not found then sends activity to settings
     public void getLocation(Context context) {
         //getZip from preferences
         zipcode = PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.zip), "");
@@ -64,10 +65,10 @@ public class MainPresenter {
                 mainView.openSettings();
             }
         });
-        //return zipcode
     }
 
-    public void getWeather(ZipLocation location, TempUnit unit) {
+    //loads weather call, onResponse updates weather for current and recylcerviews.
+    private void getWeather(ZipLocation location, TempUnit unit) {
         ApiServicesProvider apiServicesProvider = new ApiServicesProvider(mainView.getApp());
 
         //reset lists
@@ -94,6 +95,7 @@ public class MainPresenter {
 
     }
 
+    //splits days for today and tomorrow
     private void splitDays(List<ForecastCondition> forecastConditionList, Date date, int start, List<ForecastCondition> currentList) {
         //get Today's date
         Calendar calendar = Calendar.getInstance();

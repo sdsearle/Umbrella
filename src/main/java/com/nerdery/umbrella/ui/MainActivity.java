@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         //Action Bar
         getSupportActionBar().setElevation(0);
 
+        //init views
         mainPresenter = new MainPresenter(this);
         rvToday = findViewById(R.id.rvToday);
         rvTomorrow = findViewById(R.id.rvTomorrow);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
         tvCurrentCondition = findViewById(R.id.tv_current_condition);
         tvCurrentTemp = findViewById(R.id.tv_current_temp);
 
+        //init adapter
         todayRecyclerAdapter = new MyWeatherRecyclerViewAdapter(new ArrayList<>());
         tomorrowRecyclerAdapter = new MyWeatherRecyclerViewAdapter(new ArrayList<>());
         rvToday.setAdapter(todayRecyclerAdapter);
@@ -61,8 +63,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Override
     protected void onResume() {
         super.onResume();
-
-        //if location is empty then got to settings
+        //find location
         mainPresenter.getLocation(this);
     }
 

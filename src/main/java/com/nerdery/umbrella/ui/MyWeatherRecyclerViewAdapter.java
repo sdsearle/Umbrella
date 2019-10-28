@@ -27,6 +27,7 @@ public class MyWeatherRecyclerViewAdapter extends RecyclerView.Adapter<MyWeather
         mValues = items;
     }
 
+    //finds the high and low temperatures for the day.
     private void findMaxMin() {
         for (int i = 0; i < mValues.size(); i++) {
             if (mValues.get(max).getTemp() < mValues.get(i).getTemp()) {
@@ -63,6 +64,7 @@ public class MyWeatherRecyclerViewAdapter extends RecyclerView.Adapter<MyWeather
         holder.mTempertureView.setTextColor(primary);
         holder.mTimeview.setTextColor(primary);
 
+        //highlighted color
         if (max != min) {
             if (position == max) {
                 int warm = holder.mView.getResources().getColor(R.color.weather_warm);
