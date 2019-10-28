@@ -1,0 +1,12 @@
+<resources>
+    <!-- Unit Preference -->
+    <string-array name="unit_entries">
+        <item>Fahrenheit</item>
+        <item>Celsius</item>
+    </string-array>
+
+    <string-array name="unit_values">
+        <item>FAHRENHEIT</item>
+        <item>CELSIUS</item>
+    </string-array>
+</resources>
