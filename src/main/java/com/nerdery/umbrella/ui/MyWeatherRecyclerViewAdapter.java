@@ -1,4 +1,4 @@
-package com.nerdery.umbrella.data.model;
+package com.nerdery.umbrella.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,28 +10,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.nerdery.umbrella.R;
 import com.nerdery.umbrella.data.api.IconApi;
+import com.nerdery.umbrella.data.model.ForecastCondition;
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class MyWeatherRecyclerViewAdapter extends RecyclerView.Adapter<MyWeatherRecyclerViewAdapter.ViewHolder> {
 
     private List<ForecastCondition> mValues;
     int max = 0;
     int min = 0;
-    //private final OnListFragmentInteractionListener mListener;
 
-    public MyWeatherRecyclerViewAdapter(List<ForecastCondition> items){//, OnListFragmentInteractionListener listener) {
+    public MyWeatherRecyclerViewAdapter(List<ForecastCondition> items) {
         mValues = items;
     }
 
     private void findMaxMin() {
         for (int i = 0; i < mValues.size(); i++) {
-            if(mValues.get(max).getTemp() < mValues.get(i).getTemp()){
+            if (mValues.get(max).getTemp() < mValues.get(i).getTemp()) {
                 max = i;
             }
-            if(mValues.get(min).getTemp() > mValues.get(i).getTemp()){
+            if (mValues.get(min).getTemp() > mValues.get(i).getTemp()) {
                 min = i;
             }
         }
@@ -49,38 +50,32 @@ public class MyWeatherRecyclerViewAdapter extends RecyclerView.Adapter<MyWeather
         holder.mItem = mValues.get(position);
         String temp = (int) (mValues.get(position).getTemp()) + "°";
         holder.mTempertureView.setText(temp);
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a");
-        String time = simpleDateFormat.format(mValues.get(position).getTime());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm a", Locale.US);
+        String time = simpleDateFormat.format(mValues.get(position).getTime()).replaceAll("^0+", "");
         holder.mTimeview.setText(time);
 
         IconApi iconApi = new IconApi();
         Picasso.get().load(iconApi.getUrlForIcon(mValues.get(position).getIcon(), position == max || position == min)).into(holder.mImage);
-        if(position == max) {
-            int warm = holder.mView.getResources().getColor(R.color.weather_warm);
-            holder.mImage.setColorFilter(warm);
-            holder.mTempertureView.setTextColor(warm);
-            holder.mTimeview.setTextColor(warm);
-        } else if(position == min) {
-            int warm = holder.mView.getResources().getColor(R.color.weather_cool);
-            holder.mImage.setColorFilter(warm);
-            holder.mTempertureView.setTextColor(warm);
-            holder.mTimeview.setTextColor(warm);
-        }else{
-            int primary = holder.mView.getResources().getColor(R.color.text_color_primary);
-            holder.mImage.setColorFilter(primary);
-            holder.mTempertureView.setTextColor(primary);
-            holder.mTimeview.setTextColor(primary);
-        }
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }*/
+
+        //default color
+        int primary = holder.mView.getResources().getColor(R.color.text_color_primary);
+        holder.mImage.setColorFilter(primary);
+        holder.mTempertureView.setTextColor(primary);
+        holder.mTimeview.setTextColor(primary);
+
+        if (max != min) {
+            if (position == max) {
+                int warm = holder.mView.getResources().getColor(R.color.weather_warm);
+                holder.mImage.setColorFilter(warm);
+                holder.mTempertureView.setTextColor(warm);
+                holder.mTimeview.setTextColor(warm);
+            } else if (position == min) {
+                int warm = holder.mView.getResources().getColor(R.color.weather_cool);
+                holder.mImage.setColorFilter(warm);
+                holder.mTempertureView.setTextColor(warm);
+                holder.mTimeview.setTextColor(warm);
             }
-        });
+        }
     }
 
     @Override

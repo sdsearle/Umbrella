@@ -47,6 +47,7 @@ public class MainPresenter {
         zipcode = PreferenceManager.getDefaultSharedPreferences(context).getString(context.getString(R.string.zip), "");
         if(zipcode.isEmpty()){
             mainView.openSettings();
+            return;
         }
 
         ZipCodeService.INSTANCE.getLatLongByZip(context, zipcode, new ZipLocationListener() {

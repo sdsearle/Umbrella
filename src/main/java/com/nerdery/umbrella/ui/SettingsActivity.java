@@ -22,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setTitle(R.string.app_name);
+            actionBar.setBackgroundDrawable(getDrawable(R.color.status_bar));
         }
     }
 

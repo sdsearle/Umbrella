@@ -2,7 +2,7 @@
 <resources>
 
     <color name="accent">#ff2196f3</color>
-    <color name="status_bar">#ff1976d2</color>
+    <color name="status_bar">#757575</color>
     <color name="content_background">#fffafafa</color>
     <color name="text_color_primary">#dd000000</color>
     <color name="text_color_secondary">#89000000</color>
@@ -14,4 +14,5 @@
 
     <!-- Forecast card colors -->
     <color name="forecast_card_divider">#cccccc</color>
+    <color name="divider_color">#cccccc</color>
 </resources>

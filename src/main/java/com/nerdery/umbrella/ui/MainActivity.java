@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
@@ -15,9 +14,7 @@ import android.widget.TextView;
 
 import com.nerdery.umbrella.R;
 import com.nerdery.umbrella.data.model.ForecastCondition;
-import com.nerdery.umbrella.data.model.MyWeatherRecyclerViewAdapter;
 import com.nerdery.umbrella.data.model.TempUnit;
-import com.nerdery.umbrella.data.model.WeatherResponse;
 import com.nerdery.umbrella.presenter.MainPresenter;
 
 import java.util.ArrayList;
@@ -28,7 +25,6 @@ import timber.log.Timber;
 public class MainActivity extends AppCompatActivity implements MainView {
 
     MainPresenter mainPresenter;
-    private String TAG = "TAG";
     MyWeatherRecyclerViewAdapter todayRecyclerAdapter;
     MyWeatherRecyclerViewAdapter tomorrowRecyclerAdapter;
     private RecyclerView rvToday;
@@ -108,14 +104,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
             tvCurrentCondition.setText(currentForecast.getSummary());
             String currentTemp = (int) (currentForecast.getTemp()) + "°";
             tvCurrentTemp.setText(currentTemp);
-            if((currentForecast.getTemp() >= 60 && unit == TempUnit.FAHRENHEIT) || (currentForecast.getTemp() >= 16 && unit == TempUnit.CELSIUS)){
-                getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.weather_warm));
-                tvCurrentTemp.setBackground(getDrawable(R.color.weather_warm));
-                tvCurrentCondition.setBackground(getDrawable(R.color.weather_warm));
-            }else{
+            if((currentForecast.getTemp() < 60 && unit == TempUnit.FAHRENHEIT) || (currentForecast.getTemp() < 16 && unit == TempUnit.CELSIUS)){
                 getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.weather_cool));
                 tvCurrentTemp.setBackground(getDrawable(R.color.weather_cool));
                 tvCurrentCondition.setBackground(getDrawable(R.color.weather_cool));
+            }else{
+                getSupportActionBar().setBackgroundDrawable(getDrawable(R.color.weather_warm));
+                tvCurrentTemp.setBackground(getDrawable(R.color.weather_warm));
+                tvCurrentCondition.setBackground(getDrawable(R.color.weather_warm));
             }
         }
     }

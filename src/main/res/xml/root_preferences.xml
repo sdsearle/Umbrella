@@ -20,7 +20,8 @@
         app:key="@string/zip"
         app:title="Zip"
         app:useSimpleSummaryProvider="true"
-        app:allowDividerBelow="true"/>
+        app:allowDividerBelow="true"
+        app:allowDividerAbove="true"/>
 
     <ListPreference
         app:defaultValue="FAHRENHEIT"
@@ -29,6 +30,13 @@
         app:key="unit"
         app:title="Unit"
         app:useSimpleSummaryProvider="true"
-        app:allowDividerBelow="true"/>
+        app:allowDividerBelow="true"
+        app:allowDividerAbove="true" />
+
+    <Preference
+        app:allowDividerAbove="true"
+        app:shouldDisableView="true"
+        app:allowDividerBelow="true"
+        app:selectable="false"/>
 
 </PreferenceScreen>

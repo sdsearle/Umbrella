@@ -2,26 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
-    android:layout_marginLeft="12dp"
+    android:layout_marginBottom="12dp"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:text="04:00am"
+        android:layout_gravity="center"
+        style="@android:style/TextAppearance.Material.Body1"
         android:id="@+id/tvTime"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="4dp"
         android:id="@+id/ivImage"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
+        android:text="6"
+        android:layout_gravity="center"
+        style="@android:style/TextAppearance.Material.Body1"
         android:id="@+id/tvTemp"/>
 
 </LinearLayout>
